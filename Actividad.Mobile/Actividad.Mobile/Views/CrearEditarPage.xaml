@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Actividad.Mobile.ViewModels;assembly=Actividad.Mobile"
+             x:Class="Actividad.Mobile.Views.CrearEditarPage"
+             Title="{Binding BotonGuardar}">
+
+    <ContentPage.Resources>
+        <Style x:Key="EtiquetaInformacion" TargetType="Label">
+            <Setter Property="Margin" Value="2,2,2,5" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <viewModels:CrearEditarViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout Style="{StaticResource Formulario}">
+
+            <Entry Text="{Binding Usuario.Id}"
+                   IsVisible="False" />
+
+            <Label Text="Nombre(s)" />
+            <Entry Text="{Binding Usuario.Nombre}"
+                   Style="{StaticResource CajasTextoDatos}"
+                   Keyboard="Text" />
+
+            <Label Text="Apellido(s)" />
+            <Entry Text="{Binding Usuario.Apellido}"
+                   Style="{StaticResource CajasTextoDatos}"
+                   Keyboard="Text" />
+
+            <Label Text="Correo" />
+            <Entry Text="{Binding Usuario.Correo}"
+                   Style="{StaticResource CajasTextoDatos}"
+                   Keyboard="Email" />
+
+            <Label Text="Contraseña" />
+            <Entry Text="{Binding Usuario.Clave}"
+                   Style="{StaticResource CajasTextoDatos}"
+                   Keyboard="Text" />
+
+            <Label Text="Foto" />
+            <Entry Text="{Binding Usuario.Foto}"
+                   Style="{StaticResource CajasTextoDatos}"
+                   Keyboard="Text" />
+
+            <Label Text="{Binding Informacion}"
+                   Style="{StaticResource EtiquetaInformacion}" />
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Text="{Binding BotonGuardar}"
+                        Style="{StaticResource BotonEditar}"
+                        Command="{Binding GuardarCommand}" />
+
+                <Button Grid.Column="1" Text="Limpiar"
+                        Style="{StaticResource BotonLimpiar}"
+                        Command="{Binding LimpiarCommand}" />
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
